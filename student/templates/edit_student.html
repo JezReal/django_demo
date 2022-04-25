@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit student</title>
+    <style>
+        #header {
+            background-color: aquamarine;
+            height: 50px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        #form-container {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            padding: 50px;
+            margin-right: 50px;
+            width: 80%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #container {
+            display: flex;
+            justify-content: center;
+        }
+
+        input {
+            height: 20px;
+        }
+
+        .form-label {
+            font-size: 20px;
+        }
+
+        .field-wrapper {
+            margin-bottom: 10px;
+        }
+
+        #submit-button {
+            padding: 10px;
+            background-color: aquamarine;
+            border-radius: 10px;
+            width: 150px;
+            text-align: center;
+            font-size: 18px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <h3>Edit student</h3>
+</div>
+
+<div id="container">
+    <div id="form-container">
+        <form action="{% url 'student:EditStudent' student.id %}" method="post">
+            {% csrf_token %}
+            <div class="field-wrapper">
+                <label for="{{ form.first_name.id_for_label }}" class="form-label">First name:</label>
+                {{ form.first_name }}
+            </div>
+
+            <div class="field-wrapper">
+                <label for="{{ form.last_name.id_for_label }}" class="form-label">Last name:</label>
+                {{ form.last_name }}
+            </div>
+
+            <div class="field-wrapper">
+                <label for="{{ form.age.id_for_label }}" class="form-label">Age:</label>
+                {{ form.age }}
+            </div>
+            <input type="submit" value="Update student" id="submit-button">
+        </form>
+    </div>
+</div>
+</body>
+</html>

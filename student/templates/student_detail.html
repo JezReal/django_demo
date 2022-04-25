@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student detail</title>
+    <style>
+        #details-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        #header {
+            background-color: aquamarine;
+            height: 50px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        #card-container {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            padding: 20px;
+            margin-right: 50px;
+            width: 80%;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        a {
+            margin-right: 10px;
+            font-size: 20px;
+            text-decoration-color: blue;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            width: 20px;
+            color: black;
+        }
+
+        a:hover {
+            text-decoration-color: blue;
+            text-decoration: none;
+        }
+
+        #buttons-container {
+            margin-top: 30px;
+        }
+
+        #edit-button {
+            background-color: #6bff8e;
+        }
+
+        #delete-button {
+            background-color: #d75a5a;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <h3>Student details</h3>
+</div>
+
+<div id="details-container">
+    <div id="card-container">
+        <p><span>Id:</span> {{ student.id }}</p>
+        <p><span>Name:</span> {{ student.last_name }}, {{ student.first_name }}</p>
+        <p><span>Age:</span> {{ student.age }}</p>
+
+        <div id="buttons-container">
+            <a href="{% url 'student:EditStudent' student.id %}" id="edit-button">Edit</a>
+            <a href="{% url 'student:DeleteStudent' student.id %}" id="delete-button">Delete</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
